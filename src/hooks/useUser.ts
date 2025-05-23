@@ -78,7 +78,7 @@ export const useUserLogic = () => {
 
   const updateInterests = useCallback(
     async ({ interests }: UpdateInterestsParams): Promise<string> => {
-      if (!interests) return 'Need user interests';
+      if (interests.length === 0) return 'Need user interests';
       if (!token.current)
         return 'Need to verify users email to get token before call this function, use requireNewCode for users that have being already registered or registerUser for new users so we can send the code via email, then ask for the code and use checkUserCode to send the code, validate user and receive back the token.';
 

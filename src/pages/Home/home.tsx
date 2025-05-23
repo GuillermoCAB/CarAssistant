@@ -29,7 +29,7 @@ const Home: React.FC = () => {
       cancelMeeting,
       getUserSchedule,
     };
-  }, [scheduleMeeting, cancelMeeting, getUserSchedule, updateInterests]);
+  }, []);
 
   const { onSendMessage } = useMessageHandler(availableFunctions);
 
