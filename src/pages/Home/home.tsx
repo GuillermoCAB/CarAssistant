@@ -18,8 +18,6 @@ const Home: React.FC = () => {
     useUserLogic();
   const { selectCar } = usePanels();
 
-  coonsole.log('messages', messages);
-
   const availableFunctions: { [key: string]: Function } = useMemo(() => {
     return {
       scheduleMeeting,
@@ -31,7 +29,7 @@ const Home: React.FC = () => {
       cancelMeeting,
       getUserSchedule,
     };
-  }, [scheduleMeeting, cancelMeeting, getUserSchedule, updateInterests]);
+  }, []);
 
   const { onSendMessage } = useMessageHandler(availableFunctions);
 

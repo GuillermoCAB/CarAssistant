@@ -48,16 +48,13 @@ export const useMeetingLogic = () => {
           token.current
         );
 
-        let updateSchedule = [...schedule, result.schedule];
-
-        setSchedule(updateSchedule);
+        setSchedule([...schedule, result.schedule]);
         setPanelMenu(PanelMenuValues.schedule);
 
         return `Booked meeting for ${formattedDate} - ${formattedTime} with success.`;
       } catch (error) {
         const axiosError = error as AxiosError;
-        if (axiosError.response?.data.message)
-          return axiosError.response?.data.message;
+        if (axiosError.response?.data.msg) return axiosError.response?.data.msg;
 
         return `The API has returned a non processed error - Code: ${axiosError.code} - Error Message: ${axiosError.message} - API Response ${axiosError.response}`;
       }
@@ -128,7 +125,7 @@ export const useMeetingLogic = () => {
         text =
           text +
           ` ${index + 1}º Scheduled Meeting is for day ${meeting.date} at ${
-            meeting.hour
+            meeting.date
           }`;
       });
 
